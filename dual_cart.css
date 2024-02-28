@@ -1,0 +1,19 @@
+:root {
+    --background-color: ghostwhite;
+}
+
+*, html {
+    background-color: var(--background-color);
+    
+    margin: 0;
+    padding: 0;
+}
+
+.dual-cart {
+    background-color: var(--background-color);
+    
+    width: 100vw;
+    height: 100vh;
+    
+    display: block;
+}
