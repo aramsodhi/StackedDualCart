@@ -4,6 +4,7 @@
     --background-color: ghostwhite;
 
     --cart-margin: 5px;
+    --cart-margin-top: 10px;
     --cart-width: 90vw;
     --cart-height: 42vh;
     --cart-border-radius: 0px;
@@ -19,6 +20,10 @@
     --button-text-color: white;
     --button-margin: 5px;
     --button-transition: 0.2s linear all;
+    --button-padding: 7px;
+    --button-height: 40px;
+    --button-width: 90vw;
+    --button-margin: 20px;
 
     --transition: 0.3s ease-out all;
 
@@ -55,6 +60,7 @@
     height: calc(var(--cart-height) - var(--cart-margin));
 
     margin: var(--cart-margin);
+    margin-top: var(--cart-margin-top);
 
     border-radius: var(--cart-border-radius);
 
@@ -65,7 +71,6 @@
     overflow-y: var(--cart-overflow);
 
 }
-
 
 .cart-header {
     width: 100%;
@@ -134,6 +139,9 @@
 }
 
 .experiencememo-button {
+    width: var(--button-width);
+    height: var(--button-height);
+
     text-transform: uppercase;
 
     background-color: var(--button-background-color);
@@ -144,6 +152,10 @@
     border: none;
 
     transition: var(--button-transition);
+
+    padding: var(--button-padding);
+    
+    margin: var(--button-padding)
 }
 
 .experiencememo-button:hover {
