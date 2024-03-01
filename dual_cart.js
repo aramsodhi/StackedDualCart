@@ -125,5 +125,64 @@ function assign_close_event_listeners() {
         }
     });
 }
-
 assign_close_event_listeners();
+
+// function to append a product to the retailer's cart
+function append_product_retailer_cart(image_url, item_name, item_description, price) {
+    const item_div = document.createElement("div");
+    item_div.classList.add("item");
+
+    const item_image = document.createElement("div");
+    item_image.classList.add("item-image");
+    item_image.style = `background-image: url(${image_url})`;
+
+    item_div.appendChild(item_image);
+
+    const item_name_description_div = document.createElement("div");
+    item_name_description_div.classList.add("item-name-description");
+
+    const item_name_h3 = document.createElement("h3");
+    item_name_h3.innerHTML = item_name;
+
+    const item_description_p = document.createElement("p");
+    item_description_p.innerHTML = item_description;
+
+    item_name_description_div.appendChild(item_name_h3);
+    item_name_description_div.appendChild(item_description_p);
+    item_div.appendChild(item_name_description_div);
+
+    const item_price_div = document.createElement("div");
+    item_price_div.classList.add("prices");
+
+    const price_p = document.createElement("p");
+    price_p.innerHTML = price;
+    price_p.id = "purchase";
+
+    item_price_div
+
+    const remove_item_div = document.createElement("div");
+    remove_item_div.id = "remove-item";
+
+    item_div.appendChild(remove_item_div);
+}
+
+append_product_retailer_cart("https://www.google.com/imgres?imgurl=https%3A%2F%2Fres.cloudinary.com%2Fkendra-scott%2Fimage%2Fupload%2Fq_auto%2Cf_auto%2Cdpr_auto%2Fw_640%2Ch_800%2Cc_fit%2FCatalogs%2Fkendrascott%2FHoliday-1-2023%2FProduct-Images%2Fkendra-scott-framed-ari-heart-short-pendant-necklace-gold-ruby-oparex-opal-00.jpg&tbnid=Ad2SRYPCax56RM&vet=12ahUKEwiIrpyX2dOEAxULMUQIHXNDA_0QMygAegUIARChAg..i&imgrefurl=https%3A%2F%2Fwww.kendrascott.com%2Fshop-by%2Fgemstone-glamour%2Fframed-ari-heart-gold-short-pendant-necklace-in-red-opalescent-resin%2F196088563435.html&docid=fM7jPgZgANKYQM&w=640&h=800&q=necklace&ved=2ahUKEwiIrpyX2dOEAxULMUQIHXNDA_0QMygAegUIARChAg", "Test product", "lorem ipsum dolor sit amet lorem ipsum", "$1900.00");
+
+/*
+
+<div class="item">
+    <div class="item-image"></div>
+
+    <div class="item-name-description">
+        <h3>Amy Gregg</h3>
+        <p>Bezel Set Aquamarine Pendant Necklace</p>
+    </div>
+
+    <div class="prices">
+        <p id="purchase">Price: $2,800.00</p>
+    </div>
+
+    <div id="remove-item"></div>
+</div>
+
+*/
