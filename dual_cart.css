@@ -1,25 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;700&family=Poppins:wght@400;700&display=swap');
+
 :root {
     --background-color: ghostwhite;
 
-    --cart-margin: 0px;
-    --cart-width: 90w;
-    --cart-height: 49vh;
-    --cart-border-radius: 5px;
+    --cart-margin: 5px;
+    --cart-width: 90vw;
+    --cart-height: 42vh;
+    --cart-border-radius: 0px;
+    --cart-border: 1px solid black;
 
     --cart-header-margin: 5px;
+    --cart-header-font-size: 1em;
+    --cart-overflow: scroll;
 
-    --button-border-radius: 2px;
-    --button-background-color: navy;
+    --button-border-radius: 0px;
+    --button-background-color: #8c8574;
+    --button-background-color-hovered: #777162;
     --button-text-color: white;
     --button-margin: 5px;
+    --button-transition: 0.2s linear all;
 
-    --font: "Roboto", sans-serif;
+    --transition: 0.3s ease-out all;
+
+    --font: "Cardo", serif;
+
+    --shadow: 2px 0px 2px 1px rgba(0, 0, 0, 0.45);
+
+    --item-border: 1px solid lightgray;
+    --item-font-size: 0.75em;
 }
 
 *, html {
     background-color: var(--background-color);
     
-    margin: 0;
+    margin: 0px;
     padding: 0;
 
     font-family: var(--font)
@@ -34,8 +48,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    border: 1px solid black;
 }
 
 .cart {
@@ -45,38 +57,57 @@
     margin: var(--cart-margin);
 
     border-radius: var(--cart-border-radius);
-}
 
-.retailer-cart {
-    border: 1px solid red;
-}
+    border: var(--cart-border);
 
+    transition: var(--transition);
 
-
-.memo-cart {
-    border: 1px solid green;
+    overflow-y: var(--cart-overflow);
 
 }
+
 
 .cart-header {
     width: 100%;
     height: 20%;
 
-    border: 1px solid black;
+    position: sticky;
+    top: 0;
 
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-}
 
-.cart-header-collapsed {
-    height: 100%;
+    transition: var(--transition);
+
+    box-shadow: var(--shadow);
+
 }
 
 .cart-header h2 {
     margin: var(--cart-header-margin);
 
+    font-size: var(--cart-header-font-size);
+
+    display: flex;
+    justify-content: space-between;
+
+
     background-color: transparent;
+}
+
+.memo-logo {
+    width: 40px;
+    height: 40px;
+
+    background-image: url("/img/memo-logo.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transform: translateY(-4.5px);
+
+    margin-right: 10px;
 }
 
 .collapse-button {
@@ -94,4 +125,63 @@
     border-radius: var(--button-border-radius);
 
     margin: 10px;
+
+    transition: var(--button-transition);
+}
+
+.collapse-button:hover {
+    background-color: var(--button-background-color-hovered);
+}
+
+.experiencememo-button {
+    text-transform: uppercase;
+
+    background-color: var(--button-background-color);
+
+    cursor: pointer;
+
+    outline: none;
+    border: none;
+
+    transition: var(--button-transition);
+}
+
+.experiencememo-button:hover {
+    background-color: var(--button-background-color-hovered);
+}
+
+.item {
+    width: 100%;
+    height: 75px;
+
+    border-bottom: var(--item-border);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: var(--item-font-size);
+}
+
+.item-image {
+    width: 40px;
+    height: 40px;
+
+    background-image: url("img/necklace.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#remove-item {
+    width: 20px;
+
+    font-size: 2em;
+
+    cursor: pointer;
+}
+
+#remove-item:before {
+    display: inline-block;
+    content: "\00d7";
 }
