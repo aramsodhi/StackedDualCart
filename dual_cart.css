@@ -10,11 +10,11 @@
     --cart-border-radius: 0px;
     --cart-border: 1px solid black;
 
-    --memo-logo-size: 35px;
+    --memo-logo-size: 40px;
 
     --cart-header-height: 20%;
     --cart-header-margin: 5px;
-    --cart-header-font-size: 1em;
+    --cart-header-font-size: 1.5em;
     --cart-overflow: scroll;
 
     --button-border-radius: 0px;
@@ -24,9 +24,10 @@
     --button-margin: 5px;
     --button-transition: 0.2s linear all;
     --button-padding: 7px;
-    --button-height: 40px;
+    --button-height: 55px;
     --button-width: 90vw;
     --button-margin: 20px;
+    --button-font-size: 1.25em;
 
     --transition: 0.3s ease-out all;
 
@@ -44,7 +45,7 @@
     margin: 0px;
     padding: 0;
 
-    font-family: var(--font)
+    font-family: var(--font);
 }
 
 .dual-cart {
@@ -111,13 +112,28 @@
     width: var(--memo-logo-size);
     height: var(--memo-logo-size);
 
-    background-image: url("/img/memo-logo.png");
+    background-image: url("https://www.experiencememo.com/images/video-logo.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 
     margin-right: 10px;
     margin-left: 5px;
+}
+
+#retailer-cart-total, #memo-cart-total {
+    font-size: 1.5em;
+}
+
+@media only screen and (max-width: 768px) {
+    #retailer-cart-total, #memo-cart-total {
+        font-size: 1.1em;
+    }
+
+    .cart-header h2 {
+        font-size: 1.1em;
+    }
+    
 }
 
 .collapse-button {
@@ -160,7 +176,11 @@
 
     padding: var(--button-padding);
     
-    margin: var(--button-padding)
+    margin: var(--button-padding);
+
+    color: black;
+
+    font-size: var(--button-font-size);
 }
 
 .experiencememo-button:hover {
@@ -174,24 +194,29 @@
     border-bottom: var(--item-border);
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     font-size: var(--item-font-size);
 }
 
+.item > *:nth-child(n) {
+    margin: 5px;
+}
+
 .item-image {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
+    
 }
 
 .item-image img {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
 }
 
 .item-name-description p {
-    max-width: 100px;
+    max-width: 150px;
 }
 
 #remove-item {
