@@ -10,6 +10,9 @@
     --cart-border-radius: 0px;
     --cart-border: 1px solid black;
 
+    --memo-logo-size: 35px;
+
+    --cart-header-height: 20%;
     --cart-header-margin: 5px;
     --cart-header-font-size: 1em;
     --cart-overflow: scroll;
@@ -74,7 +77,7 @@
 
 .cart-header {
     width: 100%;
-    height: 20%;
+    height: var(--cart-header-height);
 
     position: sticky;
     top: 0;
@@ -97,22 +100,24 @@
     display: flex;
     justify-content: space-between;
 
-
     background-color: transparent;
 }
 
+.logo-text-wrapper {
+    display: inline-flex;
+}
+
 .memo-logo {
-    width: 40px;
-    height: 40px;
+    width: var(--memo-logo-size);
+    height: var(--memo-logo-size);
 
     background-image: url("/img/memo-logo.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 
-    transform: translateY(-4.5px);
-
     margin-right: 10px;
+    margin-left: 5px;
 }
 
 .collapse-button {
@@ -178,11 +183,11 @@
 .item-image {
     width: 40px;
     height: 40px;
+}
 
-    background-image: url("img/necklace.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.item-image img {
+    width: 40px;
+    height: 40px;
 }
 
 #remove-item {
@@ -197,3 +202,4 @@
     display: inline-block;
     content: "\00d7";
 }
+
