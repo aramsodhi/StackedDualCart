@@ -20,6 +20,10 @@ const memo_items_div = document.querySelector(".memo-items");
 const retailer_checkout_button = document.getElementById("retailer-checkout-button");
 const memo_checkout_button = document.getElementById("memo-checkout-button");
 
+// DOM references to the retailer and MEMO cart totals
+const retailer_cart_total = document.getElementById("retailer-cart-total");
+const memo_cart_total = document.getElementById("memo-cart-total");
+
 // instantiate toggle variables that indicate whether the retailer/MEMO carts are expanded or collapsed
 let retailer_cart_collapsed = false;
 let memo_cart_collapsed = false;
@@ -250,7 +254,68 @@ function append_product_memo_cart(image_url, item_name, item_description, price)
     assign_close_event_listener(item_div);
 }
 
-append_product_memo_cart("https://www.google.com/imgres?imgurl=https%3A%2F%2Fres.cloudinary.com%2Fkendra-scott%2Fimage%2Fupload%2Fq_auto%2Cf_auto%2Cdpr_auto%2Fw_640%2Ch_800%2Cc_fit%2FCatalogs%2Fkendrascott%2FHoliday-1-2023%2FProduct-Images%2Fkendra-scott-framed-ari-heart-short-pendant-necklace-gold-ruby-oparex-opal-00.jpg&tbnid=Ad2SRYPCax56RM&vet=12ahUKEwiIrpyX2dOEAxULMUQIHXNDA_0QMygAegUIARChAg..i&imgrefurl=https%3A%2F%2Fwww.kendrascott.com%2Fshop-by%2Fgemstone-glamour%2Fframed-ari-heart-gold-short-pendant-necklace-in-red-opalescent-resin%2F196088563435.html&docid=fM7jPgZgANKYQM&w=640&h=800&q=necklace&ved=2ahUKEwiIrpyX2dOEAxULMUQIHXNDA_0QMygAegUIARChAg", "Test product", "lorem ipsum dolor sit amet lorem ipsum", "$1900.00");
+// function to upate the retailer cart total
+function update_retailer_cart_total() {
+    // create a mutable variable that stores the running total of items in the cart
+    let total = 0;
+
+    retailer_items_div.childNodes.forEach((element, index) => {
+        const price_element = element.childNodes[2].childNodes[0];
+
+        // get the text inside the price element in the form "Price: $5,966.00"
+        const price_html = price_element.innerText;
+
+        // get the number after dollar sign and remove commas
+        const price_formatted = price_html.split("$")[1].replace(",", "");
+
+        // convert the price that is formatted and ready to be converted into a decimal
+        const price_decimal = parseFloat(price_formatted);
+
+        // increase the total by the price of the current item
+        total += price_decimal;
+    });
+
+    // add commas back into the decimal to separate thousands
+    total = total.toLocaleString();
+
+    // add the dollar sign back on the front of the total
+    total = "$" + total;
+
+    // set the total of this cart to the calculated total
+    retailer_cart_total.innerHTML = `Total: ${total}`;
+}
+
+
+// function to upate the MEMO cart total
+function update_memo_cart_total() {
+    // create a mutable variable that stores the running total of items in the cart
+    let total = 0;
+
+    memo_items_div.childNodes.forEach((element, index) => {
+        const price_element = element.childNodes[2].childNodes[0];
+
+        // get the text inside the price element in the form "Price: $5,966.00"
+        const price_html = price_element.innerText;
+
+        // get the number after dollar sign and remove commas
+        const price_formatted = price_html.split("$")[1].replace(",", "");
+
+        // convert the price that is formatted and ready to be converted into a decimal
+        const price_decimal = parseFloat(price_formatted);
+
+        // increase the total by the price of the current item
+        total += price_decimal;
+    });
+
+    // add commas back into the decimal to separate thousands
+    total = total.toLocaleString();
+
+    // add the dollar sign back on the front of the total
+    total = "$" + total;
+
+    // set the total of this cart to the calculated total
+    memo_cart_total.innerHTML = `Total: ${total}`;
+}
 
 // link retailer checkout buton to the retailer's checkout
 retailer_checkout_button.addEventListener("click", () => {
@@ -261,3 +326,45 @@ retailer_checkout_button.addEventListener("click", () => {
 memo_checkout_button.addEventListener("click", () => {
     alert("checking out with MEMO");
 });
+
+
+
+// ADD IN FAKE PRODUCTS FOR DEMO
+append_product_retailer_cart("https://www.experiencememo.com/images/product_images/1_5cf651586be7119-06-04-07-09-12-0.jpg",
+                            "Amusez",
+                            "Amazonite Cuff Links",
+                            "$5,966.00");
+
+append_product_retailer_cart("https://www.experiencememo.com/images/product_images/1_657e375cec25423-12-16-06-48-44-0.jpg",
+                            "Amy Gregg",
+                            "Double Icicle Drop Earring",
+                            "$3,620.00");
+
+append_product_retailer_cart("https://www.experiencememo.com/images/product_images/1_5a95679b4047d18-02-27-09-13-47-0.jpg",
+                            "Julez Bryant",
+                            "Medium Orms Hoop Earrings with Diamond Drop",
+                            "$2,200.00");
+
+
+append_product_memo_cart("https://www.experiencememo.com/images/product_images/1_654d2a91508a323-11-09-01-53-05-0.jpg",
+                        "LALAOUNIS",
+                        "Snake Wrap Ring with Sapphire",
+                        "$1,500.00");
+
+append_product_memo_cart("https://www.experiencememo.com/images/product_images/1_638635d45531122-11-29-11-39-48-0.jpg",
+                        "ILEANA MAKRI",
+                        "Grass Seed Emerald Drop Earrings",
+                        "$6,010.00");
+
+append_product_memo_cart("https://www.experiencememo.com/images/product_images/1_5aa97f80c0c8a18-03-14-04-01-04-0.jpg",
+                        "JANE TAYLOR",
+                        "Baguette White Topaz Single Drop Earrings in Yellow Gold",
+                        "$1,000.00");
+    
+append_product_memo_cart("https://www.experiencememo.com/images/product_images/1_656099b44d8df23-11-24-07-40-20-0.jpg",
+                        "LINDA HOJ ",
+                        "Eilifr Cross Necklace",
+                        "$4,250.00");
+
+update_retailer_cart_total();
+update_memo_cart_total();
