@@ -139,6 +139,9 @@ assign_close_event_listeners();
 function assign_close_event_listener(item) {
     item.childNodes[3].addEventListener("click", () => {
         delete_item(item.childNodes[3]);
+        
+        update_retailer_cart_total();
+        update_memo_cart_total();
     });
 }
 
