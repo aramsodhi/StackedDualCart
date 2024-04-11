@@ -4,9 +4,13 @@
 const retailer_cart_div = document.querySelector(".retailer-cart");
 const memo_cart_div = document.querySelector(".memo-cart");
 
-// DOM regerences to the headers inside the retailer and MEMO carts
+// DOM references to the headers inside the retailer and MEMO carts
 const retailer_cart_header = document.getElementById("retailer-cart-header");
 const memo_cart_header = document.getElementById("memo-cart-header");
+
+// DOM references to the footers inside the retailer and MEMO carts
+const retailer_cart_footer = document.getElementById("retailer-cart-footer");
+const memo_cart_footer = document.getElementById("memo-cart-footer");
 
 // DOM references to buttons that expand/collapse the retailer cart and MEMO cart
 const retailer_collapse_button = document.getElementById("retailer-collapse");
@@ -71,6 +75,8 @@ function collapse_retailer_cart() {
 
     retailer_cart_header.style = "height: 100%";
 
+    retailer_cart_footer.style = "display: none";
+
     // change content of expand/collapse button to -
     retailer_collapse_button.innerHTML = "+";
 }
@@ -80,6 +86,7 @@ function expand_retailer_cart() {
 
     retailer_cart_header.style = "height: 20%";
 
+    retailer_cart_footer.style = "display: inline-flex";
 
     // change content of expand/collapse button to -
     retailer_collapse_button.innerHTML = "-";
@@ -90,6 +97,8 @@ function collapse_memo_cart() {
 
     memo_cart_header.style = "height: 100%";
 
+    memo_cart_footer.style = "display: none";
+
     // change content of expand/collapse button to -
     memo_collapse_button.innerHTML = "+";
 }
@@ -98,6 +107,8 @@ function expand_memo_cart() {
     memo_cart_div.style = "height: 42vh";
 
     memo_cart_header.style = "height: 20%";
+
+    memo_cart_footer.style = "display: inline-flex";
 
     // change content of expand/collapse button to -
     memo_collapse_button.innerHTML = "-";
@@ -175,6 +186,7 @@ function append_product_retailer_cart(image_url, item_name, item_description, pr
     item_name_description_div.appendChild(item_description_p);
     item_div.appendChild(item_name_description_div);
 
+
     // PRICE
     const item_price_div = document.createElement("div");
     item_price_div.classList.add("prices");
@@ -186,13 +198,13 @@ function append_product_retailer_cart(image_url, item_name, item_description, pr
     item_price_div.appendChild(price_p);
     item_div.appendChild(item_price_div);
 
-
     // REMOVE BUTTON
     const remove_item_div = document.createElement("div");
     remove_item_div.id = "remove-item";
+    remove_item_div.innerHTML = "Remove Item";
 
     item_div.appendChild(remove_item_div);
-
+    
 
     // ADD TO ITEMS DIV
     retailer_items_div.prepend(item_div);
@@ -248,8 +260,11 @@ function append_product_memo_cart(image_url, item_name, item_description, price)
     // REMOVE ITEM BUTTON
     const remove_item_div = document.createElement("div");
     remove_item_div.id = "remove-item";
+    remove_item_div.innerHTML = "Remove Item";
+
 
     item_div.appendChild(remove_item_div);
+
 
     // ADD TO ITEMS DIV
     memo_items_div.prepend(item_div);
@@ -261,6 +276,8 @@ function append_product_memo_cart(image_url, item_name, item_description, price)
 function update_retailer_cart_total() {
     // create a mutable variable that stores the running total of items in the cart
     let total = 0;
+
+    console.log(retailer_items_div.childNodes);
 
     retailer_items_div.childNodes.forEach((element, index) => {
         const price_element = element.childNodes[2].childNodes[0];
@@ -285,7 +302,7 @@ function update_retailer_cart_total() {
     total = "$" + total;
 
     // set the total of this cart to the calculated total
-    retailer_cart_total.innerHTML = `Total: ${total}`;
+    retailer_cart_total.innerHTML = `Pay Today: ${total}`;
 }
 
 
@@ -317,7 +334,7 @@ function update_memo_cart_total() {
     total = "$" + total;
 
     // set the total of this cart to the calculated total
-    memo_cart_total.innerHTML = `Total: ${total}`;
+    memo_cart_total.innerHTML = `Pay Today: $0.00`;
 }
 
 // link retailer checkout buton to the retailer's checkout
@@ -371,3 +388,5 @@ append_product_memo_cart("https://www.experiencememo.com/images/product_images/1
 
 update_retailer_cart_total();
 update_memo_cart_total();
+
+

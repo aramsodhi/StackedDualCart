@@ -12,14 +12,18 @@
 
             <div class="cart retailer-cart">
                 <div class="cart-header" id="retailer-cart-header">
-                    <h2>Retailer Cart:</h2>
-                    <p id="retailer-cart-total">Total: $0.00</p>
+                    <h2>Shopping Cart:</h2>
                     <button class="collapse-button" id="retailer-collapse">-</button>
                 </div>
 
                 <div class="retailer-items"></div>
+
+                <div class="cart-footer" id="retailer-cart-footer">
+                    <p id="retailer-cart-total">Pay Today: $0.00</p>
+                </div>
             </div>
 
+            <button id="retailer-checkout-button" class="experiencememo-button">Checkout</button>
 
 
 
@@ -27,17 +31,20 @@
                 <div class="cart-header" id="memo-cart-header">
                     <div class="logo-text-wrapper">
                         <div class="memo-logo"></div>
-                        <h2>MEMO Cart:</h2>
+                        <h2>Home Try-On Cart:</h2>
                     </div>
-                    <p id="memo-cart-total">Total: $0.00</p>
                     <button class="collapse-button" id="memo-collapse">-</button>
                 </div>
 
                 <div class="memo-items"></div>
+
+                <div class="cart-footer" id="memo-cart-footer">
+                    <p id="memo-cart-total">Pay Today: $0.00</p>
+                </div>
+
         </div>
 
-        <button id="retailer-checkout-button" class="experiencememo-button">Checkout with Retailer</button>
-        <button id="memo-checkout-button" class="experiencememo-button">Checkout with MEMO</button>
+        <button id="memo-checkout-button" class="experiencememo-button">Home Try-On Checkout</button>
 
 
         <script src="dual_cart.js"></script>
