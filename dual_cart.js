@@ -201,7 +201,6 @@ function append_product_retailer_cart(image_url, item_name, item_description, pr
     // REMOVE BUTTON
     const remove_item_div = document.createElement("div");
     remove_item_div.id = "remove-item";
-    remove_item_div.innerHTML = "Remove Item";
 
     item_div.appendChild(remove_item_div);
     
@@ -260,7 +259,6 @@ function append_product_memo_cart(image_url, item_name, item_description, price)
     // REMOVE ITEM BUTTON
     const remove_item_div = document.createElement("div");
     remove_item_div.id = "remove-item";
-    remove_item_div.innerHTML = "Remove Item";
 
 
     item_div.appendChild(remove_item_div);
