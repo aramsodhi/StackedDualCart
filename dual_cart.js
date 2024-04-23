@@ -176,13 +176,13 @@ function append_product_retailer_cart(image_url, item_name, item_description, pr
     const item_name_description_div = document.createElement("div");
     item_name_description_div.classList.add("item-name-description");
 
-    const item_name_h3 = document.createElement("h3");
-    item_name_h3.innerHTML = item_name;
+    const item_name_p = document.createElement("p");
+    item_name_p.innerHTML = item_name;
 
     const item_description_p = document.createElement("p");
     item_description_p.innerHTML = item_description;
 
-    item_name_description_div.appendChild(item_name_h3);
+    item_name_description_div.appendChild(item_name_p);
     item_name_description_div.appendChild(item_description_p);
     item_div.appendChild(item_name_description_div);
 
@@ -230,13 +230,13 @@ function append_product_memo_cart(image_url, item_name, item_description, price)
     const item_name_description_div = document.createElement("div");
     item_name_description_div.classList.add("item-name-description");
 
-    const item_name_h3 = document.createElement("h3");
-    item_name_h3.innerHTML = item_name;
+    const item_name_p = document.createElement("p");
+    item_name_p.innerHTML = item_name;
 
     const item_description_p = document.createElement("p");
     item_description_p.innerHTML = item_description;
 
-    item_name_description_div.appendChild(item_name_h3);
+    item_name_description_div.appendChild(item_name_p);
     item_name_description_div.appendChild(item_description_p);
     item_div.appendChild(item_name_description_div);
 
@@ -245,7 +245,7 @@ function append_product_memo_cart(image_url, item_name, item_description, price)
     item_price_div.classList.add("prices");
 
     const purchase_p = document.createElement("p");
-    purchase_p.innerHTML = `Purchase price: ${price}`;
+    purchase_p.innerHTML = `Price: ${price}`;
     purchase_p.id = "purchase";
 
     const today_p = document.createElement("p");
@@ -275,8 +275,6 @@ function update_retailer_cart_total() {
     // create a mutable variable that stores the running total of items in the cart
     let total = 0;
 
-    console.log(retailer_items_div.childNodes);
-
     retailer_items_div.childNodes.forEach((element, index) => {
         const price_element = element.childNodes[2].childNodes[0];
 
@@ -293,14 +291,22 @@ function update_retailer_cart_total() {
         total += price_decimal;
     });
 
+    const total_before_formatting = total;
+
     // add commas back into the decimal to separate thousands
     total = total.toLocaleString();
 
     // add the dollar sign back on the front of the total
     total = "$" + total;
 
+    // if the number is not a decimal, add the .00 onto the end of the string
+    if (total_before_formatting % 1 === 0) {
+        total += ".00";
+    }
+
+
     // set the total of this cart to the calculated total
-    retailer_cart_total.innerHTML = `Pay Today: ${total}`;
+    retailer_cart_total.innerHTML = `PAY TODAY: ${total}`;
 }
 
 
@@ -332,7 +338,7 @@ function update_memo_cart_total() {
     total = "$" + total;
 
     // set the total of this cart to the calculated total
-    memo_cart_total.innerHTML = `Pay Today: $0.00`;
+    memo_cart_total.innerHTML = `PAY TODAY: $0.00`;
 }
 
 // link retailer checkout buton to the retailer's checkout

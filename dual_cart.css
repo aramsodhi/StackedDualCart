@@ -40,6 +40,7 @@
 
     --item-border: 1px solid lightgray;
     --item-font-size: 0.75em;
+    --item-image-size: 65px;
 }
 
 *, html {
@@ -131,7 +132,7 @@
     color: black;
 
     position: absolute;
-    right: 5;
+    right: 40px;
 }
 
 .logo-text-wrapper {
@@ -223,6 +224,8 @@
 
     font-family: var(--font-open-sans);
 
+    color: #62615f;
+
     display: grid;
     grid-template-columns: 10% 20% 60% auto;
 
@@ -233,15 +236,10 @@
     margin: 5px;
 }
 
-.item-image {
-    width: 45px;
-    height: 45px;
+.item-image, .item-image img {
+    width: var(--item-image-size);
+    height: var(--item-image-size);
     
-}
-
-.item-image img {
-    width: 45px;
-    height: 45px;
 }
 
 .item-name-description p {
